@@ -5,7 +5,7 @@ const GITHUB_USER = 'ntrieuvi9';
 const GITHUB_REPO = 'marketing-website';
 
 /* ==========================================================================
-   1. BẬT / TẮT MENU TRÊN ĐIỆN THOẠI
+   1. ĐÓNG MỞ MENU TRÊN MOBILE
    ========================================================================== */
 const menuBtn = document.getElementById('menu-btn');
 const navMenu = document.getElementById('nav-menu');
@@ -15,7 +15,6 @@ if (menuBtn && navMenu) {
     navMenu.classList.toggle('is-active');
   });
 
-  // Tự động đóng menu khi bấm vào bất kỳ link nào
   navMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       navMenu.classList.remove('is-active');
@@ -24,7 +23,7 @@ if (menuBtn && navMenu) {
 }
 
 /* ==========================================================================
-   2. TỰ ĐỘNG NẠP BÀI VIẾT TỪ GITHUB
+   2. TỰ ĐỘNG NẠP BÀI VIẾT TỪ THƯ MỤC POSTS
    ========================================================================== */
 async function loadDynamicPosts() {
   const container = document.getElementById('posts-container');
@@ -33,7 +32,7 @@ async function loadDynamicPosts() {
   try {
     const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/posts`);
     if (!res.ok) {
-      container.innerHTML = '<p style="text-align:center; grid-column:1/-1;">Chưa có bài viết hoặc kho GitHub chưa để chế độ Public.</p>';
+      container.innerHTML = '<p style="text-align:center; grid-column:1/-1;">Chưa có bài viết nào hoặc kho đang để chế độ Private.</p>';
       return;
     }
 
@@ -41,7 +40,7 @@ async function loadDynamicPosts() {
     const jsonFiles = files.filter(f => f.name.endsWith('.json'));
 
     if (jsonFiles.length === 0) {
-      container.innerHTML = '<p style="text-align:center; grid-column:1/-1;">Chưa có bài viết nào.</p>';
+      container.innerHTML = '<p style="text-align:center; grid-column:1/-1;">Chưa có bài viết nào trong hệ thống.</p>';
       return;
     }
 
@@ -55,7 +54,7 @@ async function loadDynamicPosts() {
       const postDate = post.date ? new Date(post.date).toLocaleDateString('vi-VN') : '';
 
       const card = document.createElement('article');
-      card.className = 'card post-card';
+      card.className = 'post-card';
       card.innerHTML = `
         <div class="post-thumb">
           <img src="${thumb}" alt="${post.title}" loading="lazy">
@@ -73,7 +72,7 @@ async function loadDynamicPosts() {
       container.appendChild(card);
     }
   } catch (err) {
-    container.innerHTML = '<p style="text-align:center; grid-column:1/-1;">Không thể kết nối đến máy chủ bài viết.</p>';
+    container.innerHTML = '<p style="text-align:center; grid-column:1/-1;">Không thể nạp bài viết lúc này.</p>';
   }
 }
 
