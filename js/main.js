@@ -1,89 +1,31 @@
-/**
- * Main Scripts for Marketing Portfolio
- * Tối ưu Core Web Vitals: Không dùng thư viện nặng, chỉ dùng Native API.
- */
-
-document.addEventListener('DOMContentLoaded', () => {
-
-  /* --------------------------------------------------------------------------
-     1. HIỆU ỨNG CUỘN TRANG (INTERSECTION OBSERVER)
-     Kích hoạt hiệu ứng trượt nhẹ và mờ dần (Fade Up) khi lướt tới vị trí
-  -------------------------------------------------------------------------- */
-  const animatedElements = document.querySelectorAll('[data-animate]');
-
-  if ('IntersectionObserver' in window) {
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px 0px -60px 0px', // Kích hoạt sớm hơn một chút trước khi chạm đáy viewport
-      threshold: 0.15
-    };
-
-    const scrollObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          // Ngừng theo dõi sau khi đã hiển thị để tiết kiệm RAM & CPU
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    animatedElements.forEach(el => scrollObserver.observe(el));
-  } else {
-    // Fallback cho trình duyệt rất cũ: hiển thị luôn nội dung
-    animatedElements.forEach(el => el.classList.add('is-visible'));
-  }
-
-  /* --------------------------------------------------------------------------
-     2. HIỆU ỨNG THANH MENU KHI CUỘN (STICKY HEADER SHADOW)
-  -------------------------------------------------------------------------- */
-  const header = document.querySelector('.header');
-  
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      header.style.boxShadow = '0 10px 25px rgba(15, 23, 42, 0.08)';
-    } else {
-      header.style.boxShadow = 'none';
-    }
-  }, { passive: true }); // passive: true giúp tăng tốc độ cuộn trang, tránh giật khung hình
-
-  /* --------------------------------------------------------------------------
-     3. XỬ LÝ FORM LIÊN HỆ & THÔNG BÁO TƯƠNG TÁC
-  -------------------------------------------------------------------------- */
-  const leadForm = document.getElementById('leadForm');
-
-  if (leadForm) {
-    leadForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const submitBtn = leadForm.querySelector('button[type="submit"]');
-      const originalText = submitBtn.textContent;
-      const clientName = document.getElementById('name').value.trim();
-
-      // Giả lập trạng thái đang gửi dữ liệu
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Đang xử lý...';
-
-      setTimeout(() => {
-        // Thông báo hoàn thành
-        alert(`Cảm ơn ${clientName}! Yêu cầu tư vấn của bạn đã được tiếp nhận. Tôi sẽ phản hồi qua email trong vòng 24 giờ.`);
-        
-        // Reset form và trả lại nút ban đầu
-        leadForm.reset();
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
-      }, 800);
-    });
-  }
-
-});
 /* ==========================================================================
-   TỰ ĐỘNG LẤY BÀI VIẾT TỪ TRANG QUẢN TRỊ GITHUB
+   CẤU HÌNH TÀI KHOẢN GITHUB
    ========================================================================== */
-// THAY CHỮ 'TÊN_TAI_KHOAN_GITHUB' BẰNG TÊN USER GITHUB CỦA BẠN:
 const GITHUB_USER = 'ntrieuvi9';
 const GITHUB_REPO = 'marketing-website';
 
+/* ==========================================================================
+   1. BẬT / TẮT MENU TRÊN ĐIỆN THOẠI
+   ========================================================================== */
+const menuBtn = document.getElementById('menu-btn');
+const navMenu = document.getElementById('nav-menu');
+
+if (menuBtn && navMenu) {
+  menuBtn.addEventListener('click', () => {
+    navMenu.classList.toggle('is-active');
+  });
+
+  // Tự động đóng menu khi bấm vào bất kỳ link nào
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('is-active');
+    });
+  });
+}
+
+/* ==========================================================================
+   2. TỰ ĐỘNG NẠP BÀI VIẾT TỪ GITHUB
+   ========================================================================== */
 async function loadDynamicPosts() {
   const container = document.getElementById('posts-container');
   if (!container) return;
@@ -91,7 +33,7 @@ async function loadDynamicPosts() {
   try {
     const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/posts`);
     if (!res.ok) {
-      container.innerHTML = '<p>Chưa có bài viết nào hoặc kho GitHub đang để chế độ Private.</p>';
+      container.innerHTML = '<p style="text-align:center; grid-column:1/-1;">Chưa có bài viết hoặc kho GitHub chưa để chế độ Public.</p>';
       return;
     }
 
@@ -99,11 +41,11 @@ async function loadDynamicPosts() {
     const jsonFiles = files.filter(f => f.name.endsWith('.json'));
 
     if (jsonFiles.length === 0) {
-      container.innerHTML = '<p>Chưa có bài viết nào. Hãy vào /admin để đăng bài.</p>';
+      container.innerHTML = '<p style="text-align:center; grid-column:1/-1;">Chưa có bài viết nào.</p>';
       return;
     }
 
-    container.innerHTML = ''; // Xóa chữ đang tải
+    container.innerHTML = '';
 
     for (const file of jsonFiles) {
       const postRes = await fetch(file.download_url);
@@ -113,10 +55,10 @@ async function loadDynamicPosts() {
       const postDate = post.date ? new Date(post.date).toLocaleDateString('vi-VN') : '';
 
       const card = document.createElement('article');
-      card.className = 'card post-card is-visible';
+      card.className = 'card post-card';
       card.innerHTML = `
         <div class="post-thumb">
-          <img src="${thumb}" alt="${post.title}" loading="lazy" width="400" height="225">
+          <img src="${thumb}" alt="${post.title}" loading="lazy">
         </div>
         <div class="post-body">
           <div class="post-meta">
@@ -131,7 +73,7 @@ async function loadDynamicPosts() {
       container.appendChild(card);
     }
   } catch (err) {
-    container.innerHTML = '<p>Không thể tải danh sách bài viết.</p>';
+    container.innerHTML = '<p style="text-align:center; grid-column:1/-1;">Không thể kết nối đến máy chủ bài viết.</p>';
   }
 }
 

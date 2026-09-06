@@ -3,120 +3,167 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Digital Marketing Portfolio & Growth Solutions</title>
-  <meta name="description" content="Chuyên gia Digital Marketing, Performance Ads, Quản trị Fanpage và Thiết kế ấn phẩm quảng cáo tăng trưởng doanh thu.">
+  <title>Nguyễn Triều Vĩ | Digital Marketing & Growth Solutions</title>
+  <meta name="description" content="Chuyên gia Performance Ads, Sáng tạo nội dung truyền thông và Xây dựng nhận diện thương hiệu đột phá doanh số.">
   
-  <!-- CSS chính -->
   <link rel="stylesheet" href="css/style.css">
-
-  <!-- Thư viện đăng nhập trang quản trị Netlify Identity -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 
-  <!-- ================= HEADER & MENU ================= -->
+  <!-- ================= HEADER ================= -->
   <header class="header">
     <div class="container nav-wrap">
-      <a href="index.html" class="logo">MARKETER<span>.GROWTH</span></a>
+      <a href="index.html" class="logo">TRIEUVI<span>.MARKETING</span></a>
 
-      <!-- Menu canh giữa -->
-      <nav class="nav-menu" aria-label="Menu chính">
-        <!-- Menu Dịch Vụ Thả Xuống -->
+      <!-- Nút mở menu trên điện thoại -->
+      <button class="mobile-toggle" id="menu-btn" aria-label="Mở menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Menu chính -->
+      <nav class="nav-menu" id="nav-menu">
         <div class="dropdown">
-          <a href="#services" class="dropdown-toggle">Dịch vụ ▾</a>
+          <span class="dropdown-toggle">Dịch vụ ▾</span>
           <ul class="dropdown-menu">
             <li><a href="dich-vu-chay-quang-cao.html">Chạy quảng cáo (Ads)</a></li>
             <li><a href="dich-vu-thiet-ke-poster.html">Thiết kế poster</a></li>
             <li><a href="dich-vu-cham-soc-fanpage.html">Chăm sóc Fanpage</a></li>
           </ul>
         </div>
-
         <a href="#articles">Bài viết & Case Study</a>
         <a href="#about">Về tôi</a>
+        <a href="#contact" class="nav-cta">Tư vấn ngay</a>
       </nav>
-
-      <!-- Nút CTA góc phải -->
-      <a href="#contact" class="nav-cta">Tư vấn ngay</a>
     </div>
   </header>
 
   <main>
-    <!-- ================= HERO SECTION ================= -->
+    <!-- ================= HERO SECTION CÓ ẢNH & HIỆU ỨNG ================= -->
     <section class="hero">
-      <div class="container">
-        <span class="badge">Performance & Content Strategy</span>
-        <h1>Giải Pháp Marketing Số <span>Tập Trung Vào Doanh Thu</span></h1>
-        <p>Tối ưu chi phí tiếp thị, tiếp cận chuẩn xác khách hàng tiềm năng và xây dựng thương hiệu bền vững trên môi trường trực tuyến.</p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Nhận Tư Vấn Ngay</a>
-          <a href="#articles" class="btn btn-outline">Xem Case Study</a>
+      <div class="container hero-grid">
+        
+        <!-- Cột chữ bên trái -->
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="pulse-dot"></span> Sẵn sàng bứt phá doanh số cùng bạn
+          </div>
+          <h1>Chiến Lược Marketing <span>Tập Trung Vào Doanh Thu Thật</span></h1>
+          <p>Không chạy lấy tương tác ảo. Tối ưu từng đồng ngân sách quảng cáo, thiết kế ấn phẩm truyền thông chuyển đổi cao và chuẩn hóa hệ thống đo lường dữ liệu chuẩn xác.</p>
+          
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary glow-btn">Liên Hệ Tư Vấn Ngay →</a>
+            <a href="#services" class="btn btn-outline">Khám Phá Dịch Vụ</a>
+          </div>
+
+          <!-- Các chỉ số nổi bật -->
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-num">5+</span>
+              <span class="stat-label">Năm Thực Chiến</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">100+</span>
+              <span class="stat-label">Chiến Dịch Ads</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">x3.8</span>
+              <span class="stat-label">ROAS Trung Bình</span>
+            </div>
+          </div>
         </div>
+
+        <!-- Cột hình ảnh với hiệu ứng hào quang & thẻ bay bên phải -->
+        <div class="hero-visual">
+          <div class="image-wrapper tilt-card">
+            <div class="image-glow"></div>
+            <img src="images/hinh vi nguyen trang chu.jpg" alt="Nguyễn Triều Vĩ - Digital Marketing Specialist" class="hero-img" loading="eager">
+            
+            <!-- Thẻ bay hiệu ứng 1 -->
+            <div class="floating-badge badge-top">
+              <span class="badge-icon">🎯</span>
+              <div>
+                <strong>Meta & Google Ads</strong>
+                <p>Tối ưu chuyển đổi</p>
+              </div>
+            </div>
+
+            <!-- Thẻ bay hiệu ứng 2 -->
+            <div class="floating-badge badge-bottom">
+              <span class="badge-icon">🚀</span>
+              <div>
+                <strong>ROAS x4.5</strong>
+                <p>Chiến dịch hiệu quả</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- ================= DỊCH VỤ CỐT LÕI ================= -->
+    <!-- ================= DỊCH VỤ ================= -->
     <section id="services" class="services">
       <div class="container">
         <div class="section-header">
-          <span class="sub-title">DỊCH VỤ NỔI BẬT</span>
-          <h2>Giải Pháp Toàn Diện Cho Doanh Nghiệp</h2>
-          <p>Lựa chọn dịch vụ phù hợp với mục tiêu tăng trưởng của bạn</p>
+          <span class="sub-title">DỊCH VỤ CỐT LÕI</span>
+          <h2>Giải Pháp Toàn Diện Cho Thương Hiệu</h2>
+          <p>Tập trung vào chuyển đổi, nhận diện thị giác và tăng trưởng bền vững</p>
         </div>
 
         <div class="grid grid-3">
-          <!-- Dịch vụ 1 -->
-          <div class="card service-card">
-            <div class="icon">📈</div>
+          <!-- Card 1 -->
+          <div class="card service-card hover-glow">
+            <div class="icon-box">📈</div>
             <h3>Chạy Quảng Cáo Chuyển Đổi</h3>
-            <p>Thiết lập chiến dịch Google & Facebook Ads tối ưu ROAS, đo lường chuẩn xác từng chuyển đổi mua hàng.</p>
-            <a href="dich-vu-chay-quang-cao.html" class="read-more" style="margin-top: 15px;">Chi tiết dịch vụ →</a>
+            <p>Triển khai chiến dịch đa kênh Google Ads & Meta Ads. Nhắm đúng tệp đối tượng, tối ưu chi phí trên từng đơn hàng thực tế.</p>
+            <a href="dich-vu-chay-quang-cao.html" class="service-link">Xem chi tiết <span>→</span></a>
           </div>
 
-          <!-- Dịch vụ 2 -->
-          <div class="card service-card">
-            <div class="icon">🎨</div>
+          <!-- Card 2 -->
+          <div class="card service-card hover-glow">
+            <div class="icon-box">🎨</div>
             <h3>Thiết Kế Poster & Banner</h3>
-            <p>Ấn phẩm truyền thông trực quan, bắt mắt, đúng tỉ lệ hiển thị quảng cáo giúp tăng tỷ lệ nhấp chuột (CTR).</p>
-            <a href="dich-vu-thiet-ke-poster.html" class="read-more" style="margin-top: 15px;">Chi tiết dịch vụ →</a>
+            <p>Sản xuất ấn phẩm truyền thông đúng nhận diện thương hiệu, bố cục thị giác kích thích khách hàng bấm mua sắm ngay.</p>
+            <a href="dich-vu-thiet-ke-poster.html" class="service-link">Xem chi tiết <span>→</span></a>
           </div>
 
-          <!-- Dịch vụ 3 -->
-          <div class="card service-card">
-            <div class="icon">📱</div>
-            <h3>Quản Trị & Chăm Sóc Fanpage</h3>
-            <p>Xây dựng lịch đăng bài bài bản, sáng tạo nội dung đều đặn và duy trì uy tín cho thương hiệu mỗi ngày.</p>
-            <a href="dich-vu-cham-soc-fanpage.html" class="read-more" style="margin-top: 15px;">Chi tiết dịch vụ →</a>
+          <!-- Card 3 -->
+          <div class="card service-card hover-glow">
+            <div class="icon-box">📱</div>
+            <h3>Chăm Sóc Fanpage Trọn Gói</h3>
+            <p>Sáng tạo nội dung đều đặn, thiết kế hình ảnh đồng bộ và xây dựng độ uy tín vững chắc để thu hút khách hàng trung thành.</p>
+            <a href="dich-vu-cham-soc-fanpage.html" class="service-link">Xem chi tiết <span>→</span></a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ================= BÀI VIẾT & CASE STUDY (NẠP TỰ ĐỘNG) ================= -->
+    <!-- ================= BÀI VIẾT TỰ ĐỘNG (GITHUB CMS) ================= -->
     <section id="articles" class="articles">
       <div class="container">
         <div class="section-header">
           <span class="sub-title">KIẾN THỨC & CASE STUDY</span>
           <h2>Kinh Nghiệm Thực Chiến</h2>
-          <p>Các phương pháp tối ưu chiến dịch, tracking và sáng tạo nội dung</p>
+          <p>Tổng hợp các bài phân tích kỹ thuật tracking, tối ưu quảng cáo và case study</p>
         </div>
 
-        <!-- Khung này tự nạp bài viết từ thư mục posts qua file main.js -->
         <div id="posts-container" class="grid grid-3">
           <p id="loading-text">Đang tải bài viết...</p>
         </div>
       </div>
     </section>
 
-    <!-- ================= GIỚI THIỆU ================= -->
+    <!-- ================= VỀ TÔI ================= -->
     <section id="about" class="about">
       <div class="container">
-        <div class="contact-box" style="max-width: 800px; text-align: center;">
-          <span class="badge">VỀ TÔI</span>
-          <h2>Đồng Hành Cùng Sự Phát Triển Của Bạn</h2>
-          <p style="margin: 20px 0; color: var(--gray-600);">
-            Với kinh nghiệm thực chiến trong việc lên chiến lược quảng cáo số, đo lường dữ liệu chuyển đổi và sản xuất ấn phẩm truyền thông, tôi tập trung vào việc tạo ra kết quả kinh doanh thực tế thay vì những chỉ số tương tác ảo.
-          </p>
-          <a href="#contact" class="btn btn-primary">Bắt Đầu Hợp Tác</a>
+        <div class="about-card">
+          <span class="sub-title">VỀ NGUYỄN TRIỀU VĨ</span>
+          <h2>Kết Nối Dữ Liệu Quảng Cáo & Sáng Tạo Thị Giác</h2>
+          <p>Một chiến dịch marketing thành công cần cả hai yếu tố: <strong>Kỹ thuật dữ liệu</strong> (để nhắm đúng người, đo lường chuẩn xác) và <strong>Mỹ thuật thị giác</strong> (để giữ chân người nhìn và thuyết phục họ hành động). Tôi đồng hành cùng doanh nghiệp để biến các ý tưởng tiếp thị thành doanh thu rõ ràng.</p>
+          <a href="#contact" class="btn btn-primary" style="margin-top: 15px;">Bắt Đầu Dự Án Ngay</a>
         </div>
       </div>
     </section>
@@ -126,9 +173,9 @@
       <div class="container">
         <div class="contact-box">
           <div class="section-header">
-            <span class="sub-title">LIÊN HỆ TRỰC TIẾP</span>
-            <h2>Nhận Tư Vấn Kế Hoạch Marketing</h2>
-            <p>Điền thông tin bên dưới để được phản hồi trong vòng 24 giờ</p>
+            <span class="sub-title">KẾT NỐI TRỰC TIẾP</span>
+            <h2>Gửi Yêu Cầu Tư Vấn</h2>
+            <p>Nhận phân tích và kế hoạch triển khai phù hợp với ngân sách của bạn</p>
           </div>
 
           <form class="form">
@@ -146,19 +193,19 @@
             <div class="form-group">
               <label for="service">Dịch vụ bạn quan tâm</label>
               <select id="service">
-                <option>Chạy quảng cáo (Google / Meta Ads)</option>
-                <option>Thiết kế poster, banner thương hiệu</option>
-                <option>Quản trị & chăm sóc Fanpage</option>
-                <option>Tư vấn tổng thể</option>
+                <option>Chạy quảng cáo (Google / Facebook Ads)</option>
+                <option>Thiết kế poster & banner quảng cáo</option>
+                <option>Quản trị và chăm sóc Fanpage</option>
+                <option>Tư vấn chiến lược toàn diện</option>
               </select>
             </div>
 
             <div class="form-group">
-              <label for="message">Mô tả nhu cầu hoặc ngân sách dự kiến</label>
-              <textarea id="message" rows="4" placeholder="Ví dụ: Cần chạy quảng cáo thời trang ngân sách 30tr/tháng..."></textarea>
+              <label for="message">Nội dung trao đổi / Ngân sách dự kiến</label>
+              <textarea id="message" rows="4" placeholder="Chia sẻ mục tiêu hoặc link sản phẩm của bạn..."></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block">Gửi Thông Tin Tư Vấn</button>
+            <button type="submit" class="btn btn-primary btn-block glow-btn">Gửi Thông Tin Ngay</button>
           </form>
         </div>
       </div>
@@ -168,14 +215,11 @@
   <!-- ================= FOOTER ================= -->
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2026 Marketer Portfolio. Tối ưu cho thiết bị di động và SEO.</p>
+      <p>&copy; 2026 Nguyễn Triều Vĩ. Thiết kế giao diện hiện đại & tối ưu Core Web Vitals.</p>
     </div>
   </footer>
 
-  <!-- File JavaScript xử lý nạp bài viết tự động từ GitHub -->
   <script src="js/main.js"></script>
-
-  <!-- Chuyển hướng đăng nhập Netlify Identity -->
   <script>
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on("init", user => {
