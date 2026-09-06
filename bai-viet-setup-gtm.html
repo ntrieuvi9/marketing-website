@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cách Setup GTM Đo Lường Mua Hàng Chuẩn Xác | Case Study</title>
+  <meta name="description" content="Hướng dẫn chi tiết cách cài đặt Google Tag Manager và GA4 đo lường đơn hàng thương mại điện tử, xử lý triệt để trùng lặp conversion.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="logo">MARKETER<span>.GROWTH</span></a>
+      <a href="index.html#articles" class="read-more">← Quay lại danh sách bài viết</a>
+    </div>
+  </header>
+
+  <!-- Nội dung bài viết -->
+  <main class="container article-container">
+    <article class="article-content">
+      
+      <!-- Thông tin đầu bài -->
+      <header class="article-header">
+        <span class="post-category">Tracking & Data</span>
+        <h1>Cách Setup GTM Đo Lường Sự Kiện Mua Hàng Không Bị Trùng Dữ Liệu</h1>
+        <div class="post-meta">
+          <time datetime="2026-09-01">01/09/2026</time>
+          <span class="dot">•</span>
+          <span>5 phút đọc</span>
+          <span class="dot">•</span>
+          <span>Tác giả: Chuyên gia Digital Marketing</span>
+        </div>
+      </header>
+
+      <!-- Nội dung chi tiết -->
+      <div class="article-body">
+        <p class="lead">Một trong những lỗi nghiêm trọng nhất khi tối ưu quảng cáo là dữ liệu chuyển đổi bị tính trùng (Duplicate Conversions). Khách hàng chỉ mua 1 đơn nhưng hệ thống nhảy 2-3 lần khiến số liệu ROAS bị ảo.</p>
+
+        <h2>1. Nguyên nhân khiến số liệu bị đếm trùng</h2>
+        <p>Khi người mua đặt hàng xong, họ được chuyển hướng đến trang cảm ơn (Thank You Page). Tuy nhiên:</p>
+        <ul>
+          <li>Khách hàng tải lại (F5) trang cảm ơn để xem lại mã đơn.</li>
+          <li>Khách hàng lưu đường link và mở lại vào hôm sau.</li>
+          <li>Trình duyệt Safari/Chrome trên điện thoại tự động tải lại tab cũ khi mở ứng dụng.</li>
+        </ul>
+
+        <h2>2. Giải pháp xử lý bằng Transaction ID</h2>
+        <p>Để ngăn chặn lỗi này, bạn cần cấu hình mã đơn hàng (Transaction ID) vào Data Layer và thiết lập quy tắc chặn kích hoạt lại thẻ trong Google Tag Manager:</p>
+        
+        <div class="callout-box">
+          <strong>Nguyên tắc vàng:</strong> Chỉ gửi sự kiện <code>purchase</code> lên Google Analytics và Meta Pixel khi <em>Transaction ID</em> đó chưa từng được ghi nhận trong phiên hiện tại.
+        </div>
+
+        <h2>3. Kết quả sau khi chuẩn hóa</h2>
+        <p>Sau khi thiết lập hệ thống đo lường chuẩn xác, doanh nghiệp sẽ nắm được con số chi phí thực tế trên từng đơn hàng (CPA thực) và thuật toán AI của Facebook/Google sẽ học đúng tệp khách hàng giá trị cao.</p>
+      </div>
+
+      <!-- Khung kêu gọi hành động cuối bài -->
+      <div class="article-cta">
+        <h3>Bạn cần kiểm tra tài khoản hoặc hệ thống đo lường?</h3>
+        <p>Đăng ký nhận đánh giá tình trạng tracking và tài khoản quảng cáo hoàn toàn miễn phí.</p>
+        <a href="index.html#contact" class="btn btn-primary">Yêu Cầu Đánh Giá Miễn Phí</a>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Marketer Portfolio. Tối ưu bởi Digital Marketer.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

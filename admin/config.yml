@@ -1,0 +1,20 @@
+backend:
+  name: git-gateway
+  branch: main # Tự động đồng bộ với nhánh main trên GitHub
+
+media_folder: "images/uploads"
+public_folder: "images/uploads"
+
+collections:
+  - name: "blog"
+    label: "Bài Viết"
+    folder: "posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{slug}}"
+    extension: "json" # Lưu dữ liệu dạng JSON để HTML tự động đọc dễ dàng
+    format: "json"
+    fields:
+      - {label: "Tiêu đề", name: "title", widget: "string"}
+      - {label: "Ngày đăng", name: "date", widget: "datetime"}
+      - {label: "Hình thu nhỏ", name: "thumbnail", widget: "image", required: false}
+      - {label: "Nội dung bài viết", name: "body", widget: "markdown"}
