@@ -1,0 +1,6 @@
+{
+  "title": "Cách Setup GTM Đo Lường Sự Kiện Mua Hàng Không Bị Trùng Dữ Liệu",
+  "date": "2026-09-01T10:00:00.000Z",
+  "thumbnail": "images/post-1.jpg",
+  "body": "Một trong những lỗi nghiêm trọng nhất khi chạy quảng cáo chuyển đổi là bị tính trùng đơn hàng (Duplicate Conversion). Dưới đây là cách xử lý triệt để bằng Transaction ID qua Google Tag Manager..."
+}
