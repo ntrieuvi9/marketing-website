@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi Tiết Bài Viết | Marketer Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Thư viện giải mã nội dung Markdown sang HTML -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="logo">MARKETER<span>.GROWTH</span></a>
+      <a href="index.html#articles" class="read-more">← Về danh sách bài viết</a>
+    </div>
+  </header>
+
+  <main class="container article-container">
+    <article class="article-content">
+      <header class="article-header">
+        <h1 id="post-title">Đang tải bài viết...</h1>
+        <div class="post-meta">
+          <time id="post-date"></time>
+        </div>
+      </header>
+
+      <div id="post-body" class="article-body"></div>
+
+      <div class="article-cta">
+        <h3>Cần tư vấn chiến lược marketing?</h3>
+        <p>Liên hệ ngay để nhận đánh giá tổng thể cho doanh nghiệp của bạn.</p>
+        <a href="index.html#contact" class="btn btn-primary">Nhận Tư Vấn</a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Marketer Portfolio.</p>
+    </div>
+  </footer>
+
+  <script>
+    // THAY CHỮ 'TÊN_TAI_KHOAN_GITHUB' BẰNG TÊN USER GITHUB CỦA BẠN:
+    const GITHUB_USER = 'ntrieuvi9';
+    const GITHUB_REPO = 'marketing-website';
+
+    async function loadSinglePost() {
+      const params = new URLSearchParams(window.location.search);
+      const fileName = params.get('file');
+
+      if (!fileName) {
+        document.getElementById('post-title').textContent = 'Không tìm thấy bài viết.';
+        return;
+      }
+
+      try {
+        const url = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/posts/${fileName}`;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('Lỗi tải dữ liệu');
+        const post = await res.json();
+
+        document.title = post.title;
+        document.getElementById('post-title').textContent = post.title;
+        if (post.date) {
+          document.getElementById('post-date').textContent = new Date(post.date).toLocaleDateString('vi-VN');
+        }
+        document.getElementById('post-body').innerHTML = marked.parse(post.body || '');
+      } catch (e) {
+        document.getElementById('post-title').textContent = 'Lỗi không thể nạp bài viết.';
+      }
+    }
+
+    loadSinglePost();
+  </script>
+</body>
+</html>

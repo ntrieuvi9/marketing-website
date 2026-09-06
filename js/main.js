@@ -77,3 +77,62 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+/* ==========================================================================
+   TỰ ĐỘNG LẤY BÀI VIẾT TỪ TRANG QUẢN TRỊ GITHUB
+   ========================================================================== */
+// THAY CHỮ 'TÊN_TAI_KHOAN_GITHUB' BẰNG TÊN USER GITHUB CỦA BẠN:
+const GITHUB_USER = 'ntrieuvi9';
+const GITHUB_REPO = 'marketing-website';
+
+async function loadDynamicPosts() {
+  const container = document.getElementById('posts-container');
+  if (!container) return;
+
+  try {
+    const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/posts`);
+    if (!res.ok) {
+      container.innerHTML = '<p>Chưa có bài viết nào hoặc kho GitHub đang để chế độ Private.</p>';
+      return;
+    }
+
+    const files = await res.json();
+    const jsonFiles = files.filter(f => f.name.endsWith('.json'));
+
+    if (jsonFiles.length === 0) {
+      container.innerHTML = '<p>Chưa có bài viết nào. Hãy vào /admin để đăng bài.</p>';
+      return;
+    }
+
+    container.innerHTML = ''; // Xóa chữ đang tải
+
+    for (const file of jsonFiles) {
+      const postRes = await fetch(file.download_url);
+      const post = await postRes.json();
+      
+      const thumb = post.thumbnail || 'images/post-1.jpg';
+      const postDate = post.date ? new Date(post.date).toLocaleDateString('vi-VN') : '';
+
+      const card = document.createElement('article');
+      card.className = 'card post-card is-visible';
+      card.innerHTML = `
+        <div class="post-thumb">
+          <img src="${thumb}" alt="${post.title}" loading="lazy" width="400" height="225">
+        </div>
+        <div class="post-body">
+          <div class="post-meta">
+            <time>${postDate}</time>
+          </div>
+          <h3 class="post-title">
+            <a href="bai-viet.html?file=${file.name}">${post.title}</a>
+          </h3>
+          <a href="bai-viet.html?file=${file.name}" class="read-more">Đọc tiếp →</a>
+        </div>
+      `;
+      container.appendChild(card);
+    }
+  } catch (err) {
+    container.innerHTML = '<p>Không thể tải danh sách bài viết.</p>';
+  }
+}
+
+loadDynamicPosts();
