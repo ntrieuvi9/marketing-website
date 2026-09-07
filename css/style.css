@@ -1045,3 +1045,185 @@ img {
     text-align: center;
   }
 }
+/* ==========================================================================
+   11. SẢN PHẨM AFFILIATE (SHOPEE / TIKTOK SHOP)
+   ========================================================================== */
+.affiliate-section {
+  padding: 85px 0;
+  background: #f8fafc; /* Nền sáng sạch sẽ nổi bật thẻ sản phẩm */
+}
+
+/* Lưới sản phẩm: 4 cột trên PC */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+  transition: all 0.3s ease;
+}
+
+/* Thẻ sản phẩm */
+.product-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Ẩn sản phẩm khi quá 10 cái */
+.hidden-item {
+  display: none !important;
+}
+
+/* Tag Mua với giá tốt (Hiệu ứng nhịp đập) */
+.p-badge-hot {
+  position: absolute;
+  top: 10px;
+  left: -4px;
+  background: linear-gradient(90deg, #ef4444, #f97316);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 5px 12px;
+  border-radius: 0 8px 8px 0;
+  z-index: 2;
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4);
+  animation: pulseBadge 2s infinite;
+}
+
+@keyframes pulseBadge {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Vùng ảnh */
+.p-thumb {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #f1f5f9;
+  overflow: hidden;
+}
+
+.p-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover .p-thumb img {
+  transform: scale(1.05);
+}
+
+/* Thông tin sản phẩm */
+.p-info {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.p-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.5;
+  margin-bottom: 16px;
+  /* Giới hạn 2 dòng chữ, nếu dài tự thành dấu ... */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Nút mua TikTok Shop */
+.btn-buy-tiktok {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: background 0.2s;
+}
+
+.btn-buy-tiktok:hover {
+  background: #222222;
+}
+
+/* Nút Xem Thêm */
+.show-more-wrap {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn-show-more {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  padding: 12px 30px;
+  border-radius: 99px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-show-more:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+  border-color: #94a3b8;
+}
+
+.btn-show-more span {
+  font-size: 0.7rem;
+  margin-left: 6px;
+}
+
+/* TỐI ƯU CỰC KỲ CHI TIẾT CHO MOBILE */
+@media (max-width: 1024px) {
+  .product-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+  /* Tối ưu UI giống hệt Shopee: Chia 2 cột trên điện thoại */
+  .product-grid { 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 12px; /* Thu hẹp khoảng cách cho mobile */
+  }
+  
+  .p-info {
+    padding: 12px 10px;
+  }
+  
+  .p-title {
+    font-size: 0.85rem; /* Thu nhỏ chữ tiêu đề để vừa khung */
+    margin-bottom: 12px;
+  }
+  
+  .btn-buy-tiktok {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+
+  .p-badge-hot {
+    font-size: 0.65rem;
+    padding: 4px 8px;
+    top: 6px;
+  }
+}
