@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi Tiết Dịch Vụ | TrieuVi.Ai</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">🚀</span>
+        TrieuVi.Ai
+      </a>
+      <a href="index.html#features" class="btn-primary" style="padding: 8px 20px; font-size: 0.85rem;">← Về Trang Chủ</a>
+    </div>
+  </header>
+
+  <main style="padding: 100px 0; min-height: 80vh;">
+    <div class="container" style="max-width: 800px;">
+      <article class="contact-card" style="text-align: left;">
+        <div id="service-icon" style="font-size: 3rem; margin-bottom: 16px;">📈</div>
+        <h1 id="service-title" style="font-size: 2.2rem; margin-bottom: 20px; color: var(--text-dark);">Đang tải thông tin dịch vụ...</h1>
+        <p id="service-desc" style="font-size: 1.1rem; color: var(--text-gray-light); margin-bottom: 30px; font-weight: 500;"></p>
+        
+        <div id="service-body" class="markdown-content" style="line-height: 1.8; color: var(--text-dark);"></div>
+
+        <div style="margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); text-align: center;">
+          <h3 style="margin-bottom: 12px;">Bạn Cần Tư Vấn Riêng Cho Ngành Hàng Của Mình?</h3>
+          <a href="index.html#contact" class="btn btn-primary pulse-btn">Đăng Ký Khám Kênh Ngay →</a>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Nguyễn Triều Vĩ. Dịch vụ Marketing chất lượng cao.</p>
+    </div>
+  </footer>
+
+  <script>
+    const GITHUB_USER = 'ntrieuvi9';
+    const GITHUB_REPO = 'marketing-website';
+
+    async function loadServiceDetail() {
+      const params = new URLSearchParams(window.location.search);
+      const fileName = params.get('file');
+
+      if (!fileName) {
+        document.getElementById('service-title').textContent = 'Không tìm thấy dịch vụ.';
+        return;
+      }
+
+      try {
+        const url = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/main/services/${fileName}`;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+
+        document.title = data.title + " | TrieuVi.Ai";
+        document.getElementById('service-title').textContent = data.title;
+        document.getElementById('service-icon').textContent = data.icon || "🚀";
+        document.getElementById('service-desc').textContent = data.description || "";
+        document.getElementById('service-body').innerHTML = marked.parse(data.body || "");
+      } catch (err) {
+        document.getElementById('service-title').textContent = 'Lỗi kết nối hoặc không tìm thấy dữ liệu dịch vụ.';
+      }
+    }
+
+    loadServiceDetail();
+  </script>
+</body>
+</html>
