@@ -1227,3 +1227,10 @@ img {
     top: 6px;
   }
 }
+.btn-buy-shopee {
+  background: #ee4d2d !important;
+  border-color: #ee4d2d !important;
+}
+.btn-buy-shopee:hover {
+  background: #d73211 !important;
+}
